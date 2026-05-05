@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Action · Informe Semanal · 5 mayo 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; text-align: left !important; }
+  body { font-family: 'Inter', Arial, sans-serif; background: #111; color: #f0f0f0; -webkit-font-smoothing: antialiased; text-align: left; }
+  .wrapper { max-width: 620px; margin: 0 auto; background: #1a1a1a; text-align: left; }
+  .footer-cta { text-align: center !important; }
+  .footer-contact { text-align: center !important; }
+  .footer-legal { text-align: center !important; }
+  .week-badge { text-align: center !important; }
+
+  .header { background: #111; padding: 28px 32px 24px; border-bottom: 1px solid #2a2a2a; }
+  .logo-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .week-badge { font-size: 10px; font-weight: 600; background: #f07820; color: #fff; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+  .header-title { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 5px; text-align: left; }
+  .header-sub { font-size: 12px; color: #888; text-align: left; }
+  .header-sub span { color: #f07820; }
+
+  .body { padding: 0 24px 8px; }
+
+  .sl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+  .sl::before { content: ''; display: inline-block; width: 3px; border-radius: 2px; height: 13px; }
+  .sl-orange { color: #f07820; } .sl-orange::before { background: #f07820; }
+  .sl-gray { color: #888; } .sl-gray::before { background: #444; }
+
+  /* MACRO */
+  .macro-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 4px; }
+  .macro { background: #242424; border-radius: 8px; padding: 12px 14px; }
+  .macro-label { font-size: 10px; color: #aaa; margin-bottom: 4px; text-align: left; }
+  .macro-val { font-size: 15px; font-weight: 600; color: #f0f0f0; text-align: left; }
+  .macro-sub { font-size: 10px; color: #888; margin-top: 3px; line-height: 1.4; text-align: left; }
+
+  /* INDICADORES VN */
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 4px; }
+  .metric { background: #242424; border-radius: 8px; padding: 12px 14px; }
+  .metric-label { font-size: 10px; color: #aaa; margin-bottom: 4px; text-align: left; }
+  .metric-value { font-size: 15px; font-weight: 600; color: #fff; text-align: left; }
+  .metric-delta { font-size: 10px; margin-top: 3px; text-align: left; }
+  .up { color: #6dbf7e; } .dn { color: #f07820; } .neu { color: #888; }
+
+  /* VO GRID */
+  .vo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
+  .vo-box { background: #1e1e1e; border: 1px solid #2e2e2e; border-radius: 8px; padding: 12px 14px; }
+  .vo-label { font-size: 10px; color: #aaa; margin-bottom: 4px; text-align: left; }
+  .vo-val { font-size: 15px; font-weight: 600; color: #f07820; text-align: left; }
+  .vo-sub { font-size: 10px; color: #888; margin-top: 3px; line-height: 1.4; text-align: left; }
+
+  /* CARDS */
+  .card { background: #222; border: 1px solid #333; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .card-accent { border-left: 3px solid #f07820; border-radius: 0 10px 10px 0; }
+  .card-tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 12px; margin-bottom: 8px; }
+  .t-orange { background: #3a1f00; color: #f07820; }
+  .t-gray { background: #2a2a2a; color: #aaa; }
+  .card-title { font-size: 14px; font-weight: 600; color: #f5f5f5; margin-bottom: 7px; line-height: 1.4; text-align: left; }
+  .card-body { font-size: 13px; color: #aaa; line-height: 1.7; text-align: left; }
+  .card-body strong { color: #f0f0f0; font-weight: 600; }
+  .card-source { font-size: 10px; color: #444; margin-top: 10px; padding-top: 8px; border-top: 1px solid #2e2e2e; text-align: left; }
+
+  /* INSIGHTS */
+  .ins-item { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid #2e2e2e; text-align: left; }
+  .ins-item:last-child { border-bottom: none; }
+  .ins-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .ins-title { font-size: 13px; font-weight: 600; color: #f0f0f0; margin-bottom: 4px; text-align: left; }
+  .ins-body { font-size: 13px; color: #aaa; line-height: 1.65; text-align: left; }
+  .ins-attr { font-size: 10px; color: #666; margin-top: 4px; text-align: left; }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+  /* RANKINGS */
+  .rank-list { list-style: none; margin-top: 8px; }
+  .rank-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #2e2e2e; font-size: 13px; color: #ccc; text-align: left; }
+  .rank-list li:last-child { border-bottom: none; }
+  .rn { font-size: 10px; font-weight: 700; color: #555; min-width: 16px; }
+  .rv { margin-left: auto; font-size: 10px; }
+
+  .divider { border: none; border-top: 1px solid #2a2a2a; margin: 20px 0 0; }
+
+  /* FOOTER */
+  .footer { background: #111; padding: 24px 32px; border-top: 1px solid #2a2a2a; }
+  .footer-sources { font-size: 10px; color: #444; line-height: 1.8; margin-bottom: 16px; text-align: left; }
+  .footer-cta { background: #f07820; color: #fff; text-align: center; padding: 14px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+  .footer-contact { text-align: center; font-size: 12px; color: #666; margin-bottom: 12px; }
+  .footer-contact a { color: #f07820; text-decoration: none; }
+  .footer-legal { font-size: 10px; color: #333; text-align: center; line-height: 1.6; }
+  .footer-legal a { color: #555; }
+
+  @media (max-width: 480px) {
+    .macro-grid, .metrics-grid, .vo-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .body { padding: 0 16px 8px; }
+    .header { padding: 20px 16px 18px; }
+    .footer { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-row">
+      <img src="https://i.imgur.com/qOZgy5V.png" alt="Auto Action" style="height:38px;width:auto;display:block;">
+      <div class="week-badge">INFORME SEMANAL</div>
+    </div>
+    <div class="header-title">Mercado del Automóvil en España</div>
+    <div class="header-sub">Semana <span>28 de abril – 5 de mayo de 2026</span> · Concesionarios y multimarca</div>
+  </div>
+
+  <div class="body">
+
+    <!-- MACRO -->
+    <div class="sl sl-gray">Contexto macroeconómico — España · mayo 2026</div>
+    <div class="macro-grid">
+      <div class="macro"><div class="macro-label">IPC abril 2026</div><div class="macro-val">3,2%</div><div class="macro-sub">↓ 0,2pp vs marzo · INE</div></div>
+      <div class="macro"><div class="macro-label">Inflación subyacente</div><div class="macro-val">2,8%</div><div class="macro-sub">↓ 0,1pp vs marzo · INE</div></div>
+      <div class="macro"><div class="macro-label">Confianza consumidor</div><div class="macro-val">83,9</div><div class="macro-sub">Feb 2026 · CIS · en recuperación</div></div>
+      <div class="macro"><div class="macro-label">Tipo BCE</div><div class="macro-val">2,65%</div><div class="macro-sub">En bajada desde 4% · ene 2026</div></div>
+      <div class="macro"><div class="macro-label">TAE crédito (banco)</div><div class="macro-val">5,6–7%</div><div class="macro-sub">TIN desde 3,99% · Kelisto/BdE</div></div>
+      <div class="macro"><div class="macro-label">TAE crédito (concesión)</div><div class="macro-val">7,9%</div><div class="macro-sub">+2,3pp vs banca · Kelisto</div></div>
+      <div class="macro"><div class="macro-label">Parque medio España</div><div class="macro-val">14,6 años</div><div class="macro-sub">Antigüedad media · DGT 2025</div></div>
+      <div class="macro"><div class="macro-label">Rácio VO / VN</div><div class="macro-val">~2:1</div><div class="macro-sub">2,21 M VO vs 1,15 M VN · 2025</div></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- INDICADORES VN -->
+    <div class="sl sl-orange">Indicadores clave — enero a abril 2026</div>
+    <div class="metrics-grid" style="margin-bottom:20px">
+      <div class="metric"><div class="metric-label">Matrículas abril</div><div class="metric-value">106.862</div><div class="metric-delta up">↑ 8,4% vs abr 2025</div></div>
+      <div class="metric"><div class="metric-label">Acum. ene–abr</div><div class="metric-value">407.389</div><div class="metric-delta up">↑ 7,8% interanual</div></div>
+      <div class="metric"><div class="metric-label">BEV+PHEV cuota</div><div class="metric-value">21,3%</div><div class="metric-delta up">↑ 42,5% en unidades</div></div>
+      <div class="metric"><div class="metric-label">Cuota híbrido conv.</div><div class="metric-value">~50%</div><div class="metric-delta neu">Tecnología líder</div></div>
+      <div class="metric"><div class="metric-label">Cuota diésel</div><div class="metric-value">~4%</div><div class="metric-delta dn">Mínimo histórico</div></div>
+      <div class="metric"><div class="metric-label">Precio medio VN</div><div class="metric-value">43.486€</div><div class="metric-delta up">↓ 505€ vs 2025</div></div>
+      <div class="metric"><div class="metric-label">Previsión año 2026</div><div class="metric-value">1,2 M</div><div class="metric-delta up">↑ 4,6% (Ideauto)</div></div>
+    </div>
+
+    <!-- VO INDICADORES -->
+    <div class="sl sl-orange">Mercado de vehículo de ocasión (VO)</div>
+    <div class="vo-grid">
+      <div class="vo-box"><div class="vo-label">Precio medio VO ene 2026</div><div class="vo-val">17.635€</div><div class="vo-sub">4.º mes a la baja · +0,6% vs ene 2025 · coches.net</div></div>
+      <div class="vo-box"><div class="vo-label">Precio medio stock vivo</div><div class="vo-val">19.685€</div><div class="vo-sub">248.648 vehículos · año medio 2020 · 71.255 km</div></div>
+      <div class="vo-box"><div class="vo-label">Precio VO eléctrico</div><div class="vo-val">30.588€</div><div class="vo-sub">Precio medio · GANVAM Q1 2026</div></div>
+      <div class="vo-box"><div class="vo-label">Precio VO diésel</div><div class="vo-val">13.429€</div><div class="vo-sub">↓ 5,2% interanual · más depreciado</div></div>
+      <div class="vo-box"><div class="vo-label">Ventas VO eléctrico Q1</div><div class="vo-val">+48,8%</div><div class="vo-sub">Interés comprador: +73% · GANVAM</div></div>
+      <div class="vo-box"><div class="vo-label">VO seminuevo &lt;1 año</div><div class="vo-val">35.359€</div><div class="vo-sub">↓ 7,5% interanual · oportunidad stock</div></div>
+      <div class="vo-box"><div class="vo-label">VO 1–3 años</div><div class="vo-val">29.794€</div><div class="vo-sub">↑ 5,2% interanual · alta demanda</div></div>
+      <div class="vo-box"><div class="vo-label">VO previsto 2026</div><div class="vo-val">&gt;2,3 M</div><div class="vo-sub">↑ ~5% vs 2025 · Faconauto/GANVAM</div></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- INSIGHTS -->
+    <div class="sl sl-orange">Insights estratégicos</div>
+    <div class="card card-accent">
+
+      <div class="ins-item">
+        <div class="ins-dot" style="background:#f07820"></div>
+        <div>
+          <div class="ins-title">Crédito más barato, pero la brecha banca–concesionario penaliza ventas</div>
+          <div class="ins-body">El TAE medio en concesionario (7,9%) sigue 2,3 puntos por encima del banco. En un coche de 25.000 € a 5 años, son más de 1.500 € de diferencia. El comprador informado ya lo sabe y compara antes de entrar al showroom.</div>
+        </div>
+      </div>
+
+      <div class="ins-item">
+        <div class="ins-dot" style="background:#f07820"></div>
+        <div>
+          <div class="ins-title">El VO está en precio mínimo — la ventana es limitada</div>
+          <div class="ins-body">Cuatro meses a la baja, precio medio en 17.635 €, eléctrico usado en 30.588 €. Cuando el Plan MOVES reactive el VN en Q3, la retoma caerá y los precios rebotarán. Quien construye lote ahora — ECO y eléctrico — llega mejor posicionado al otoño.</div>
+        </div>
+      </div>
+
+      <div class="ins-item">
+        <div class="ins-dot" style="background:#888"></div>
+        <div>
+          <div class="ins-title">El punto de control real está en la compra, no en la venta</div>
+          <div class="ins-body">Mejorar la tasa de retoma de 40% a 50% en 200 ventas/mes genera 20 coches adicionales — €240.000 más al año sin inversión extra en marketing. Con el parque español en 14,6 años y el VO en mínimos de precio, el potencial de la retoma propia nunca fue tan alto.</div>
+          <div class="ins-attr">Análisis: Diego Berlanga · LinkedIn</div>
+        </div>
+      </div>
+
+      <div class="ins-item">
+        <div class="ins-dot" style="background:#888"></div>
+        <div>
+          <div class="ins-title">Menos pedidos, más volumen: señal de alerta que el mercado aún no lee</div>
+          <div class="ins-body">Faconauto detectó caída en cartera de pedidos en abril. La confianza del consumidor (83,9) sigue por debajo de los 100 puntos de percepción positiva. Crece el volumen de matrículas pero se contrae el pipeline futuro. El Q3 confirmará si es corrección puntual o inicio de desaceleración.</div>
+        </div>
+      </div>
+
+      <div class="ins-item">
+        <div class="ins-dot" style="background:#888"></div>
+        <div>
+          <div class="ins-title">Contexto macro favorable, pero el consumidor sigue cauteloso</div>
+          <div class="ins-body">La inflación retrocede al 3,2% en abril y el BCE mantiene la senda de bajadas (2,65%). El crédito es más accesible que en 2023-2024, pero la confianza del consumidor español por debajo de los 100 puntos indica que la demanda de bienes duraderos como el automóvil aún depende de incentivos claros para consolidarse.</div>
+          <div class="ins-attr">Análisis: Nuno Castel-Branco · CNN Portugal</div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <!-- NOTICIAS VO -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-tag t-orange">VO Eléctrico · GANVAM · Q1 2026</div>
+        <div class="card-title">Ventana de precio que se cerrará en otoño</div>
+        <div class="card-body">El eléctrico de ocasión crece al ritmo más alto de su historia (+48,8% Q1). Cuando el Plan MOVES reactive el VN en Q3, la oferta de VO eléctrico se contraerá rápidamente. El patrón de Noruega lo confirma: caída de precios, luego rebote en 12-18 meses.</div>
+        <div class="card-source">motor16.com · GANVAM · Q1 2026</div>
+      </div>
+      <div class="card">
+        <div class="card-tag t-orange">TÜV Report 2026 · ZBE</div>
+        <div class="card-title">Diésel en caída; ECO, el activo más buscado</div>
+        <div class="card-body">El 40% de coches con más de 12 años acumula fallos graves (9,5 M inspecciones). Wallapop Motor: los compradores buscan ya exclusivamente ECO para circular sin restricciones en las ZBE. Diésel de ocasión en mínimos: 13.429 €, ↓5,2%.</div>
+        <div class="card-source">autonocion.com (TÜV 2026) · Wallapop Motor</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ANFAC / FACONAUTO -->
+    <div class="sl sl-gray">ANFAC y FACONAUTO · semana 28 abr – 5 may 2026</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-tag t-gray">ANFAC · 4 mayo 2026</div>
+        <div class="card-title">3.er mes seguido superando 100.000 matrículas</div>
+        <div class="card-body">Abril cierra en 106.862 unidades (+8,4%). Félix García (ANFAC): el mercado "descuenta las señales de alarma del Estrecho de Ormuz". Descontando efecto DANA 2025, particulares crecen al 19% real. Híbrido convencional roza el 50% del total.</div>
+        <div class="card-source">anfac.com · coches.net/noticias</div>
+      </div>
+      <div class="card">
+        <div class="card-tag t-gray">FACONAUTO · abril 2026</div>
+        <div class="card-title">Crecimiento positivo, cartera de pedidos en caída</div>
+        <div class="card-body">Raúl Morales (Faconauto): "detectamos una caída en la actividad comercial con menor cartera de pedidos". Objetivo: 1,3 M unidades condicionado al Plan Auto+ (hasta 4.500 € para electrificados). Alerta en transporte pesado: cuota eléctrica del 1,1% vs 3,6% media UE.</div>
+        <div class="card-source">faconauto.com · pressdigital.es</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- RANKINGS -->
+    <div class="sl sl-gray">Rankings — abril 2026</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-tag t-gray">Más vendidos totales</div>
+        <ul class="rank-list">
+          <li><span class="rn">1</span>Dacia Sandero<span class="rv up">↑ líder part.</span></li>
+          <li><span class="rn">2</span>SEAT Ibiza<span class="rv up">↑ acum. año</span></li>
+          <li><span class="rn">3</span>Toyota C-HR<span class="rv neu">top SUV</span></li>
+          <li><span class="rn">4</span>Peugeot 208<span class="rv neu">estable</span></li>
+          <li><span class="rn">5</span>Toyota Yaris Cross<span class="rv up">en alza</span></li>
+        </ul>
+        <div class="card-source">motor.es · DGT/Ideauto</div>
+      </div>
+      <div class="card">
+        <div class="card-tag t-gray">BEV más vendidos</div>
+        <ul class="rank-list">
+          <li><span class="rn">1</span>Toyota C-HR+<span class="rv up">831 ud.</span></li>
+          <li><span class="rn">2</span>BYD Dolphin Surf<span class="rv up">544 ud.</span></li>
+          <li><span class="rn">3</span>Kia EV3<span class="rv up">427 ud.</span></li>
+          <li><span class="rn">4</span>Tesla Model 3<span class="rv neu">líder acum.</span></li>
+          <li><span class="rn">5</span>Mercedes EQA<span class="rv neu">top premium</span></li>
+        </ul>
+        <div class="card-source">coches.net · motor.es</div>
+      </div>
+      <div class="card">
+        <div class="card-tag t-gray">PHEV más vendidos</div>
+        <ul class="rank-list">
+          <li><span class="rn">1</span>BYD Seal U DM-i<span class="rv up">1.252 ud.</span></li>
+          <li><span class="rn">2</span>BYD Atto 2 DM-i<span class="rv up">967 ud.</span></li>
+          <li><span class="rn">3</span>Mercedes GLC<span class="rv neu">580 ud.</span></li>
+          <li><span class="rn">4</span>BYD Atto 3<span class="rv neu">estable</span></li>
+          <li><span class="rn">5</span>Toyota RAV4 PHEV<span class="rv neu">sólido</span></li>
+        </ul>
+        <div class="card-source">coches.net · motor.es</div>
+      </div>
+      <div class="card">
+        <div class="card-tag t-gray">Marcas acumulado 2026</div>
+        <ul class="rank-list">
+          <li><span class="rn">1</span>Toyota<span class="rv up">↑ 20,4%</span></li>
+          <li><span class="rn">2</span>SEAT<span class="rv up">↑ posiciones</span></li>
+          <li><span class="rn">3</span>Volkswagen<span class="rv up">↑ 7,8%</span></li>
+          <li><span class="rn">4</span>BYD<span class="rv up">↑ 174%</span></li>
+          <li><span class="rn">5</span>Renault<span class="rv neu">estable</span></li>
+        </ul>
+        <div class="card-source">km77.com · ANFAC</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- MARCAS -->
+    <div class="sl sl-gray">Marcas y novedades</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-tag t-gray">BYD y marcas chinas</div>
+        <div class="card-title">BYD +174%: la disrupción ya es estructural</div>
+        <div class="card-body">BYD domina los rankings PHEV y crece sin precedentes. Lepas (Chery premium), Omoda (+258%), Haval, Denza y Changan completan el avance. El eléctrico chino urbano ya por debajo de 20.000 € antes de ayudas.</div>
+        <div class="card-source">motor.es · motor16.com</div>
+      </div>
+      <div class="card">
+        <div class="card-tag t-gray">Lanzamientos · mayo 2026</div>
+        <div class="card-title">Novedades en concesionarios este mes</div>
+        <div class="card-body">
+          • <strong>Porsche Cayenne eléctrico</strong> — el más potente de la marca.<br>
+          • <strong>CUPRA Raval VZ</strong> (226 CV, Martorell) — primera prueba.<br>
+          • <strong>Mercedes Clase S restyling</strong> — evolución hacia eléctrico.<br>
+          • <strong>Fiat 500 híbrido</strong> — mild-hybrid 65 CV.<br>
+          • <strong>SEAT Ibiza/Arona restyling</strong> — solo gasolina hasta 2027.
+        </div>
+        <div class="card-source">motor1.es · autopista.es</div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-sources">
+      <strong style="color:#666">Fuentes:</strong> ANFAC · FACONAUTO · GANVAM · INE · BCE · Banco de España · Kelisto · coches.net · motor.es · km77.com · motor16.com · autopista.es · DGT/Ideauto · CrestaNevada · TÜV Report 2026 · Wallapop Motor · Diego Berlanga (LinkedIn) · Nuno Castel-Branco / CNN Portugal
+    </div>
+    <div class="footer-cta">Informe preparado por Auto Action · Semana 28 abr – 5 may 2026</div>
+    <div class="footer-contact">¿Preguntas o comentarios? <a href="mailto:marketing@auto-action.com">marketing@auto-action.com</a></div>
+    <div class="footer-legal">
+      Está recibiendo este informe porque forma parte de nuestra base de clientes del sector automoción en España.<br>
+      <a href="{{unsubscribe}}">Cancelar suscripción</a> · {{unsubscribe}}
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
